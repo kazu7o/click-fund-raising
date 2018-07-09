@@ -14,6 +14,7 @@ driver = webdriver.Chrome(executable_path="/Users/kztmr/Downloads/chromedriver")
 #Macは⌘キー
 ctrl = Keys.COMMAND
 
+driver.set_window_size(100, 200)
 ########################################################
 ###               クリック募金サイト                 ###
 ########################################################
@@ -77,28 +78,24 @@ btn = driver.find_element(By.XPATH, "//embed[@src='click120530.swf']")
 btn.click()
 
 #やまがた被害者支援センター
-driver.get("http://yvsc.jp/")
-del(btn)
-btn = driver.find_elements(By.XPATH, "//aside[@class='banner_container']/ul/li/a")
-for i in btn:
-  i.click()
-for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
-  driver.switch_to.window(window)
-  if i == 0:
-    continue
-  driver.close()
-else:
-  driver.switch_to.window(driver.window_handles[0])
-
-pprint(btn)
-
-#BrotherEarch
-#driver.get("http://www.brotherearth.com/ja/top.html")
-#btn = driver.find_element(By.XPATH, "//*[@id='donateDirect1']")
-#btn.click()
-
+#driver.get("http://yvsc.jp/")
+#del(btn)
+#btn = driver.find_elements(By.XPATH, "//aside[@class='banner_container']/ul/li/a")
+##btn = driver.find_elements(By.XPATH, "//img[@class='bnr-img']")
+#pprint(btn)
+#for i in btn:
+#  i.click()
+#for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
+#  driver.switch_to.window(window)
+#  if i == 0:
+#    continue
+#  driver.close()
+#else:
+#  driver.switch_to.window(driver.window_handles[0])
+#
 #最終画面
 driver.get("file:///Users/kztmr/codes/dash_button/index.html")
+#driver.get("./index.html")
 time.sleep(10)
 
 driver.quit()
