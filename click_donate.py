@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 import time
 from pprint import pprint
 
@@ -14,7 +15,7 @@ driver = webdriver.Chrome(executable_path="/Users/kztmr/Downloads/chromedriver")
 #Macは⌘キー
 ctrl = Keys.COMMAND
 
-driver.set_window_size(100, 200)
+#driver.set_window_size(500, 600)
 ########################################################
 ###               クリック募金サイト                 ###
 ########################################################
@@ -69,7 +70,7 @@ driver.get("https://www.dff.jp/click/view/83/loading.html?t=1531050396146")
 time.sleep(1)
 del(btn)
 btn = driver.find_element(By.XPATH, "//img[@alt='東北の学生を応援する']")
-time.sleep(1)
+time.sleep(2)
 btn.click()
 
 #アンダ・クリック募金
@@ -78,23 +79,55 @@ btn = driver.find_element(By.XPATH, "//embed[@src='click120530.swf']")
 btn.click()
 
 #やまがた被害者支援センター
-#driver.get("http://yvsc.jp/")
-#del(btn)
+driver.get("http://yvsc.jp/")
+del(btn)
+driver.execute_script("window.scrollTo(0, 3500);")
+time.sleep(1)
 #btn = driver.find_elements(By.XPATH, "//aside[@class='banner_container']/ul/li/a")
-##btn = driver.find_elements(By.XPATH, "//img[@class='bnr-img']")
-#pprint(btn)
-#for i in btn:
-#  i.click()
-#for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
-#  driver.switch_to.window(window)
-#  if i == 0:
-#    continue
-#  driver.close()
-#else:
-#  driver.switch_to.window(driver.window_handles[0])
-#
+btn = driver.find_elements(By.XPATH, "//img[@class='bnr-img']")
+for i in btn:
+  i.click()
+for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
+  driver.switch_to.window(window)
+  if i == 0:
+    continue
+  driver.close()
+else:
+  driver.switch_to.window(driver.window_handles[0])
+
+#いわて被害者支援センター
+driver.get("https://www.iwate-vsc.jp/")
+del(btn)
+time.sleep(1)
+btn = driver.find_elements(By.XPATH, "//div[@class='campaignbnr']/ul/li/a")
+for i in btn:
+  i.click()
+for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
+  driver.switch_to.window(window)
+  if i == 0:
+    continue
+  driver.close()
+else:
+  driver.switch_to.window(driver.window_handles[0])
+
+#大阪市市民活動総合ポータルサイト
+driver.get("http://kyodo-portal.city.osaka.jp/click/")
+del(btn)
+time.sleep(1)
+btn = driver.find_elements(By.XPATH, "//ul[@class='bnr']/li/a/img")
+pprint(btn)
+for i in btn:
+  i.click()
+for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
+  driver.switch_to.window(window)
+  if i == 0:
+    continue
+  driver.close()
+else:
+  driver.switch_to.window(driver.window_handles[0])
+
 #最終画面
-driver.get("file:///Users/kztmr/codes/dash_button/index.html")
+driver.get("http://goldstacks.xyz/click_donate/")
 #driver.get("./index.html")
 time.sleep(10)
 
