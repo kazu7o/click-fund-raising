@@ -115,7 +115,6 @@ driver.get("http://kyodo-portal.city.osaka.jp/click/")
 del(btn)
 time.sleep(1)
 btn = driver.find_elements(By.XPATH, "//ul[@class='bnr']/li/a/img")
-pprint(btn)
 for i in btn:
   i.click()
 for window, i in zip(driver.window_handles, range(len(driver.window_handles))):
