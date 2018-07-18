@@ -136,14 +136,6 @@ driver.switch_to.window(driver.window_handles[1])
 driver.close()
 driver.switch_to.window(driver.window_handles[0])
 
-#デュプログリーンプロジェクト
-driver.implicitly_wait(10)
-driver.get("https://www.duplo-seiko.co.jp/dgp/")
-time.sleep(5)
-btn = driver.find_element(By.XPATH, "//li[@id='btns0']/a/img")
-btn.click()
-time.sleep(3)
-
 #飢餓救済ウェブ
 driver.get("http://www.jp.seicho-no-ie.org/kiga/fund_a.html")
 btn = driver.find_elements(By.XPATH, "//ul[@class='cols-5']/li/div/a/img")
